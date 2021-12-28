@@ -46,10 +46,6 @@ var directions2;
     directions2["Right"] = "Right";
 })(directions2 || (directions2 = {}));
 console.log(directions2.Down);
-//********** Object **********
-const user = { id: 2, name: 'usama' };
-const user2 = { id: 23, name: 'jhone doe' };
-console.log(user2);
 //********** Type Assertion **********
 // agr ksi variable ki type any ho or bad uski koi type fix krni ho
 let cid = 'F';
@@ -71,6 +67,10 @@ function log(x) {
     console.log(x);
 }
 log('hello');
+//********** Object **********
+const user = { id: 2, name: 'usama' };
+const user2 = { id: 23, name: 'jhone doe' };
+console.log(user2);
 const interfaceUser = { id: 23, name: 'jhone doe' };
 const add = (x, y) => {
     return x + y;
@@ -79,3 +79,57 @@ const sub = (x, y) => {
     return x - y;
 };
 console.log(sub(12, 9));
+// ********** Classes ***********
+// classes are used to create objects
+// class ka object jb call kry gy to class k andr mojood constructor chaly ga 
+// data modifiers in Classes
+// 1)public ==> a variable can be accessed through every where
+// 2)private ==> a variable can be accessed within the class
+// 2)private ==> a variable can be accessed within the class or that other class which is extended to it
+class Message {
+    constructor() {
+        console.log('classes ');
+    }
+}
+const text = new Message();
+class Person {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+    register() {
+        return `${this.name} is note register`;
+    }
+}
+const bioData = new Person(23, 'Usama');
+console.log(bioData);
+console.log(bioData.register());
+class Employees {
+    constructor(role, designation, years) {
+        this.role = role;
+        this.designation = designation;
+        this.years = years;
+    }
+    register() {
+        // return this.years <=== error
+        return this.role;
+    }
+}
+const emp = new Employees('Engineer', 'AM', 3);
+console.log(emp);
+console.log(emp.register());
+//  classes with extend classes
+class Teacher {
+    constructor(name, id) {
+        this.name = name;
+        this.id = id;
+    }
+}
+class Faculty extends Teacher {
+    constructor(name, id, timing) {
+        super(name, id);
+        this.timing = timing;
+    }
+}
+const result = new Faculty('MF', 1, 'morning');
+console.log(result);

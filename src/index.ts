@@ -48,12 +48,7 @@ enum directions2{
 }
 console.log(directions2.Down)
 
-//********** Object **********
-const user:{ id:number , name:string } ={ id:2 , name:'usama'}
-// second way to define objects
-type User={id:number | string, name:string}
-const user2:User={ id:23 , name:'jhone doe'}
-console.log(user2)
+
 //********** Type Assertion **********
 // agr ksi variable ki type any ho or bad uski koi type fix krni ho
 let cid:any='F'
@@ -78,6 +73,12 @@ function log(x: string | number) : void{
 }
 log('hello')
 
+//********** Object **********
+const user:{ id:number , name:string } ={ id:2 , name:'usama'}
+// second way to define objects
+type User={id:number | string, name:string}
+const user2:User={ id:23 , name:'jhone doe'}
+console.log(user2)
 //************Interfaces *************
 // interfaces are just like objects
 // objects me union ki trh aik vaiable ki 2 types define kr skty h lekin interface me nhi
@@ -89,7 +90,7 @@ interface typeInterface {
     name:string ,
     age?:number
 }
-const interfaceUser:User={ id:23 , name:'jhone doe'}
+const interfaceUser:typeInterface={ id:23 , name:'jhone doe'}
 
 // Interface With Function
 // one interface can used with different functions
@@ -103,3 +104,79 @@ const sub:addFunct=(x:number,y:number):number=>{
     return x-y
 }
 console.log(sub(12,9))
+
+// ********** Classes ***********
+// classes are used to create objects
+// class ka object jb call kry gy to class k andr mojood constructor chaly ga 
+// data modifiers in Classes
+// 1)public ==> a variable can be accessed through every where
+// 2)private ==> a variable can be accessed within the class
+// 2)private ==> a variable can be accessed within the class or that other class which is extended to it
+
+class Message{
+    constructor(){
+        console.log('classes ')
+    }
+}
+const text=new Message()
+
+class Person{
+    id:number
+    name : string
+    constructor(id:number, name:string){
+        this.id=id
+        this.name=name
+    }
+
+    register(){
+       return `${this.name} is note register`
+    }
+}
+const bioData=new Person(23,'Usama')
+console.log(bioData)
+console.log(bioData.register())
+
+//  classes with interface
+interface PersonInterface {
+    role:string
+    designation:string
+    years:number
+    register(): string 
+}
+class Employees implements PersonInterface {
+    role
+    designation
+    years
+ 
+    constructor(role: string,designation:string,years:number){
+        this.role=role
+        this.designation=designation
+        this.years=years
+    }
+    register(){
+        // return this.years <=== error
+        return this.role
+    }
+}
+const emp=new Employees('Engineer','AM',3)
+console.log(emp)
+console.log(emp.register())
+
+//  classes with extend classes
+class Teacher{
+    name:string
+    id:number
+    constructor(name:string,id:number){
+        this.name=name
+        this.id=id
+    }
+}
+class Faculty extends Teacher{
+    timing:string
+    constructor(name:string,id:number,timing:string){
+        super(name,id)
+        this.timing=timing
+    }
+}
+const result=new Faculty('MF',1,'morning')
+console.log(result)
