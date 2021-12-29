@@ -78,6 +78,7 @@ const add = (x, y) => {
 const sub = (x, y) => {
     return x - y;
 };
+console.log(add(12, 9));
 console.log(sub(12, 9));
 // ********** Classes ***********
 // classes are used to create objects
@@ -133,3 +134,19 @@ class Faculty extends Teacher {
 }
 const result = new Faculty('MF', 1, 'morning');
 console.log(result);
+// ************Generic************
+// normal way
+function gArray(item) {
+    return new Array().concat(item);
+}
+let nmArray = gArray([1, 2, 3, 4, 5]);
+let stArray = gArray(['a', 'b', 'c']);
+// generic way
+function getArray(item) {
+    return new Array().concat(item);
+}
+let numArray = getArray([1, 2, 3, 4, 5]);
+let strArray = getArray(['a', 'b', 'c']);
+// normal way me number rray me koi string b push krskty ha lekin generic me nhi kiun k whn type define krdi
+// type normal me bh define krskty th lekin phr string k lye alag gArray ka function bnana prta or number k lye alag
+// generic way is lye use krty ha k ta k reuseable function bna sky

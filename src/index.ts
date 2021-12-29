@@ -103,6 +103,7 @@ const add:addFunct=(x:number,y:number):number=>{
 const sub:addFunct=(x:number,y:number):number=>{
     return x-y
 }
+console.log(add(12,9))
 console.log(sub(12,9))
 
 // ********** Classes ***********
@@ -180,3 +181,21 @@ class Faculty extends Teacher{
 }
 const result=new Faculty('MF',1,'morning')
 console.log(result)
+
+
+// ************Generic************
+// normal way
+function gArray(item:any[]):any[]{
+    return new Array().concat(item)
+}
+let nmArray=gArray([1,2,3,4,5])
+let stArray=gArray(['a','b','c'])
+// generic way
+function getArray<T>(item:T[]):T[]{
+    return new Array().concat(item)
+}
+let numArray=getArray<number>([1,2,3,4,5])
+let strArray=getArray<string>(['a','b','c'])
+// normal way me number rray me koi string b push krskty ha lekin generic me nhi kiun k whn type define krdi
+// type normal me bh define krskty th lekin phr string k lye alag gArray ka function bnana prta or number k lye alag
+// generic way is lye use krty ha k ta k reuseable function bna sky
